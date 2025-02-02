@@ -7,6 +7,16 @@ export default function Main() {
         imgUrl: "http://i.imgflip.com/1bij.jpg"
     })
 
+    function handleChange(event){
+        const {value, name} = event.currentTarget
+        console.log(event.currentTarget.name)
+            setMemeInfo(prevMeme => ({
+                ...prevMeme,
+                [name]: value
+            }))
+        
+    }
+
     return (
         <main>
             <div className="form">
@@ -15,6 +25,8 @@ export default function Main() {
                         type="text"
                         placeholder="One does not simply"
                         name="topText"
+                        onChange={handleChange}
+                        value={memeInfo.topText}
                     />
                 </label>
 
@@ -23,6 +35,8 @@ export default function Main() {
                         type="text"
                         placeholder="Walk into Mordor"
                         name="bottomText"
+                        onChange={handleChange}
+                        value={memeInfo.bottomText}
                     />
                 </label>
                 <button>Get a new meme image 🖼</button>
